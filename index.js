@@ -47,10 +47,6 @@ const generateId = () => {
     return Math.floor(Math.random()*500)
 }
 
-app.get('/', (request, response) => {
-    response.send('phonebook api server')
-})
-
 app.get('/api/persons', (request, response) => {
     response.json(persons)
 })
