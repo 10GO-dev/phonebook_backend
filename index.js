@@ -47,7 +47,7 @@ const generateId = () => {
 }
 
 app.get('/', (request, response) => {
-    response.send(`<a href='http://localhost:3001/api/persons'>got to /api/persons</a>`)
+    response.send('phonebook api server')
 })
 
 app.get('/api/persons', (request, response) => {
