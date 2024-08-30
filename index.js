@@ -15,6 +15,7 @@ app.listen(PORT, () => {
 
 morgan.token('body', function (request) { return JSON.stringify(request.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
+app.use(express.static('dist'))
 
 
 
@@ -93,7 +94,7 @@ app.post('/api/persons', (request, response) => {
       error:'name must be unique'
     })
   }
-  const person = { name: body.name, number: body.number, id: String(generateId()) }
+  const person = { name: body.name, number: String(body.number), id: String(generateId()) }
 
   persons = persons.concat(person)
   response.json(person)
