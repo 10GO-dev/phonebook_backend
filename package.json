@@ -2,17 +2,22 @@
   "name": "phonebook_backend",
   "version": "1.0.0",
   "description": "The backend server for the phonebook app",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node --env-file=.env index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --exec 'node --env-file=.env' index.js",
+    "debug": "nodemon --inspect index.js",
+    "build:ui": "rm -rf dist && cd ../FullStackOpen/part2/phonebook && npm run build && cp -r dist ../../../phonebook_backend",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
   "author": "Diego Peralta",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "mongoose": "^8.6.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
